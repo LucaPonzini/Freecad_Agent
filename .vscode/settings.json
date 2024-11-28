@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/usr/lib/freecad-python3/lib",
+        "/usr/lib/freecad"
+    ],
+    "python.pythonPath": "/home/lucaponz/progetto_freecad/venv/bin/python"
+}
