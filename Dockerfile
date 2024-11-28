@@ -1,42 +1,19 @@
-# Usa una base image Python
 FROM python:3.10-slim
 
-# Aggiorna e installa le dipendenze di sistema necessarie per FreeCAD (senza FreeCAD)
-RUN apt-get update && apt-get install -y \
+# Installazione di dipendenze di base
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    cmake \
-    python3-dev \
-    libeigen3-dev \
-    libboost-all-dev \
-    libqt5gui5 \
-    qtbase5-dev \
-    && apt-get clean
+    libgl1-mesa-glx \
+    && rm -rf /var/lib/apt/lists/*
 
-# Crea e attiva un ambiente virtuale Python
-RUN python3 -m venv /venv
-ENV PATH="/venv/bin:$PATH"
+# Installazione di JupyterLab
+RUN pip install --no-cache-dir jupyterlab
 
-# Installa le dipendenze Python nel venv
-RUN pip install --upgrade pip && \
-    pip install numpy pyqt5 jupyter
+# Creazione della directory di lavoro
+WORKDIR /app
 
-# Imposta PYTHONPATH con i percorsi di FreeCAD
-ENV PYTHONPATH="/mnt/wsl/Ubuntu-22.04/home/lucaponz/.local/lib/python3.10/site-packages:/mnt/wsl/Ubuntu-22.04/usr/lib/freecad-python3/lib:/mnt/wsl/Ubuntu-22.04/usr/lib/freecad:$PYTHONPATH"
-
-# Verifica che FreeCAD sia accessibile
-RUN /venv/bin/python3 -c "import sys; print('PYTHONPATH:', sys.path); import FreeCAD; print('FreeCAD Version:', FreeCAD.Version())"
-
-# Imposta la directory di lavoro nel container
-WORKDIR /workspace
-
-# Copia il progetto locale nella cartella di lavoro del container
-COPY . /workspace
-
-# Installa Jupyter Lab
-RUN pip install jupyterlab
-
-# Esponi la porta per Jupyter
+# Esposizione della porta per JupyterLab
 EXPOSE 8888
 
-# Comando di default per eseguire Jupyter Lab
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root"]
+# Comando predefinito
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
