@@ -1,0 +1,14 @@
+# Ignora ambienti virtuali e file binari
+venv/
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignora file di configurazione specifici dell'editor
+.vscode/
+.idea/
+
+# Ignora file temporanei
+*.log
+*.tmp
+*.swp

@@ -1,4 +1,0 @@
-[ZoneTransfer]
-ZoneId=3
-ReferrerUrl=https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.2
-HostUrl=https://objects.githubusercontent.com/github-production-release-asset-2e65be/5736080/6861f2fa-b108-459e-8745-7bc4fa676407?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20241111%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241111T195304Z&X-Amz-Expires=300&X-Amz-Signature=15b77cb48db2b46c393ac0734bd59b54a11a6fba2a3741ae69610745f5efac1d&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3DFreeCAD-0.21.2-Linux-x86_64.AppImage&response-content-type=application%2Foctet-stream
