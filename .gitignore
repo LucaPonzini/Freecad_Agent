@@ -1,14 +1,8 @@
-# Ignora ambienti virtuali e file binari
+# Ignora directory degli ambienti virtuali
 venv/
-*.pyc
-*.pyo
-__pycache__/
 
-# Ignora file di configurazione specifici dell'editor
-.vscode/
-.idea/
-
-# Ignora file temporanei
+# Ignora file temporanei e file di grandi dimensioni
+*.AppImage
 *.log
-*.tmp
-*.swp
+__pycache__/
+*.pyc
